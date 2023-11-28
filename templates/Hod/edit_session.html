@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Update Session</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="subjects.html">Subject</a></li>
+                    <li class="breadcrumb-item active">Session</li>
+                </ul>
+            </div>
+            {% include 'includes/messages.html' %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'Update_Session' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Session</span></h5>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Session End</label>
+                                    <div>
+                                       <input type="date" class="form-control" name= "session_start" value="{{session.session_start}}">
+                                       <input type="hidden" class="form-control" value="{{session.id}}" name="session_id">
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>Session End</label>
+                                        <div>
+                                           <input type="date" class="form-control" value="{{session.session_end}}" name="session_end">
+                                        </div>
+                                    </div>
+                                </div>     
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Update Session</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

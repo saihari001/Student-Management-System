@@ -1,0 +1,49 @@
+<script>
+    $(document).ready(function() {
+
+        // Area chart
+        
+        var options = {
+            series: [{{student_id}}, {{staff_id}}],
+            chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ['Student', 'Staff'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#studentandstaff"), options);
+    chart.render() 
+      
+    var options = {
+        series: [{{course_id}}, {{subject_id}}],
+        chart: {
+        type: 'donut',
+      },
+      labels: ['Course', 'Subject'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+      };
+      var chart = new ApexCharts(document.querySelector("#courseandsubject"), options);
+      chart.render();
+    });
+</script>

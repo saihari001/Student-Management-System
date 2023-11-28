@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h3 class="page-title">Result</h3>
+             <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Result</li>
+             </ul>
+          </div>
+          {% include 'includes/messages.html' %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="table_id" class="table table-hover table-center mb-0 datatable">
+                            <thead>
+                                <tr> 
+                                    <th>ID</th>
+                                    <th>Subject</th>
+                                    <th>Assignment</th>
+                                    <th>Exam</th>
+                                    <th>Result</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in result %}
+                                <tr>
+                                    <td>{{i.id}}</td>
+                                    <td>{{i.subject}}</td>
+                                    <td>{{i.assignment_mark}}</td>
+                                    <td>{{i.exam_mark}}</td>
+                                    <td>{{marks}}</td>
+                                    <td class="text-right">
+                                        <div class="actions">
+                                            {% if marks <= 40 %}
+                                            <span class='badge badge-danger p-2'>FAIL</span>
+                                            {% else %}
+                                            <span class="badge badge-success p-2">PASS</span>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
